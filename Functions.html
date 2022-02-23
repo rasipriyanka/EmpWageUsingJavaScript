@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<script>
+'use strict';
+
+function askDefault(yes,no,theQue='Can You Answer?'){
+    if(question(theQue)) yes();
+    else no();
+}
+function ask(theQue,...others){
+    if(question(theQue)) others[0]()
+    else others[1] ();
+
+} 
+function showOk(){
+    alert("You Agreed.");
+}
+function showCancel(){
+    alert("You Cancelled the execution");
+}
+let question=function(theQue){
+    return confirm(theQue);
+}
+ask("Do You Agree",showOk,showCancel);
+askDefault(showOk,showCancel);
+</script>
+</html>
