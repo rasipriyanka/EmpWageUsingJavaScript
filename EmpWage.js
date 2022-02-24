@@ -1,4 +1,4 @@
-//----uc3-----//
+//----uc4-----//
 const IS_FULL_TIME = 1;
 const IS_PART_TIME = 2;
 const EMP_RATE_PER_HR = 20;
@@ -20,7 +20,14 @@ function GetWorkingHrs(empInput) {
             return empHrs;
     }
 }
-empHrs = GetWorkingHrs(empInput);
-//-----calculate daily wage-------//
-let dailWage = EMP_RATE_PER_HR * empHrs;
-console.log("UC3 DAily wage:" + dailWage);
+const MAX_WORKING_DAYS = 20;
+let totalWage = 0;
+for (let day = 1; day <= MAX_WORKING_DAY; day++) {
+    let randomInput = Math.floor(Math.random() * 10) % 3;
+    empHrs = GetWorkingHrs(randomInput);
+
+    let dailWage = EMP_RATE_PER_HR * empHrs;
+    console.log("UC3 DAily wage:" + dailWage);
+    totalWage += dailyWage;
+}
+console.log("UC4 TotalWage for 20 days:" + totalWage);
