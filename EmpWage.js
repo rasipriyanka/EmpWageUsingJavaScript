@@ -29,10 +29,35 @@ while(day <= MAX_WORKING_DAYS && hrs<= MAX_WORKING_HRS) {
     empHrs = GetWorkingHrs(randomInput);
     let dailyWage = EMP_RATE_PER_HR * empHrs;
     empWageArray.push(dailyWage);
-    console.log("UC5 day"+day+"wage:"+dailyWage);
+    console.log(" day"+day+"wage:"+dailyWage);
     totalWage += dailyWage;
     day++;
     hrs+=empHrs;
 }
-console.log("UC5 TotalWage for "+MAX_WORKING_DAYS+"days:"+hrs+"hrs"+totalWage);
+console.log("UC6 TotalWage for "+MAX_WORKING_DAYS+"days:"+hrs+"hrs"+totalWage);
 console.log("EmpWageArray:"+empWageArray.join(" "));
+//------UC7A Total Wage Using foreach helper method-----//
+let emptotalWage=0;
+function GetTotalWage(dailyWage){
+    emptotalWage+=dailyWage;
+}
+console.log("Array"+empWageArray.forEach(GetTotalWage));
+console.log(" UC7A-Total Wage using foreach help method:"+emptotalWage);
+
+function GetTotalWageUsingReduce(empTotal,dailyWage){
+   return empTotal+=dailyWage;
+}
+console.log("ArrayReduce"+empWageArray.reduce(GetTotalWageUsingReduce));
+
+//---------UC7B Array Map Helper Function----------//
+let days=1;
+function GetMapValues(dailyWage){
+    return "Day"+days++ +"="+dailyWage;
+}
+let mapResult=empWageArray.map(GetMapValues);
+//---Converting map to array---//
+console.log(Array.from(mapResult));
+for(let s of mapResult){  
+    console.log(s);
+}
+// console.log("UC7BArray"+empWageArray.map(GetMapValues));
