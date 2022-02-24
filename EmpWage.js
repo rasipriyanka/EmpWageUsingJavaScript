@@ -1,4 +1,4 @@
-//----uc5-----//
+//----uc6-----//
 const IS_FULL_TIME = 1;
 const IS_PART_TIME = 2;
 const EMP_RATE_PER_HR = 20;
@@ -22,14 +22,17 @@ function GetWorkingHrs(empInput) {
 }
 const MAX_WORKING_DAYS = 20;
 const MAX_WORKING_HRS=80;
-let totalWage = 0,day=1;
-while(day <= MAX_WORKING_DAY && hrs<= MAX_WORKING_HRS) {
+let totalWage = 0,day=1,hrs=0;
+let empWageArray=new Array();
+while(day <= MAX_WORKING_DAYS && hrs<= MAX_WORKING_HRS) {
     let randomInput = Math.floor(Math.random() * 10) % 3;
     empHrs = GetWorkingHrs(randomInput);
-    let dailWage = EMP_RATE_PER_HR * empHrs;
-    console.log("UC5 day"+day+"wage:"+dailywage);
+    let dailyWage = EMP_RATE_PER_HR * empHrs;
+    empWageArray.push(dailyWage);
+    console.log("UC5 day"+day+"wage:"+dailyWage);
     totalWage += dailyWage;
     day++;
     hrs+=empHrs;
 }
 console.log("UC5 TotalWage for "+MAX_WORKING_DAYS+"days:"+hrs+"hrs"+totalWage);
+console.log("EmpWageArray:"+empWageArray.join(" "));
