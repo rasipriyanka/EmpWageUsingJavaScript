@@ -1,4 +1,4 @@
-//-----UC10--------//
+//-----UC11--------//
 const IS_FULL_TIME = 1;
 const IS_PART_TIME = 2;
 const Working_Per_Hr = 20;
@@ -44,5 +44,21 @@ while (totalEmpHrs <= MAX_HRS_IN_MONTH && totalWorkingDays < NUM_OF_WORKING_DAYS
         },
     });
 }
-console.log(
-    "\nUC10 Showing Daily Hours Worked and Wage Earned: " + empDailyHrsAndWageArr)
+console.log("\nUC10 Showing Daily Hours Worked and Wage Earned: " + empDailyHrsAndWageArr);
+let totalWages = empDailyHrsAndWageArr.filter((dailyHrsAndWage) => dailyHrsAndWage.dailyWage > 0)
+    .reduce((totalWage, dailyHrsAndWage) => (totalWage += dailyHrsAndWage.dailyWage), 0);
+let totalHours = empDailyHrsAndWageArr.filter((dailyHrsAndWage) => dailyHrsAndWage.dailyWage > 0)
+    .reduce((totalHours, dailyHrsAndWage) => (totalHours += dailyHrsAndWage.dailyHours), 0);
+console.log("\nUC 11A - Total Hours: " + totalHours + " Total Wages: " + totalWages);
+let fullTimeWorkingDaysStrArr = empDailyHrsAndWageArr
+    .filter((dailyHrsAndWage) => dailyHrsAndWage.dailyHours == 8)
+    .forEach((dailyHrsAndWage) => console.log(dailyHrsAndWage.toString()));
+console.log("\nUC 11B - FullTimeWorkingDayStrings: " + fullTimeWorkingDaysStrArr);
+let partWorkingDaysStrArr = empDailyHrsAndWageArr
+    .filter((dailyHrsAndWage) => dailyHrsAndWage.dailyHours == 4)
+    .map((dailyHrsAndWage) => dailyHrsAndWage.toString());
+console.log("\nUC 11C - PartWorkingDayStrings: " + partWorkingDaysStrArr);
+let nonWorkingDayNums = empDailyHrsAndWageArr
+    .filter((dailyHrsAndWage) => dailyHrsAndWage.dailyHours == 0)
+    .map((dailyHrsAndWage) => dailyHrsAndWage.dayNum);
+console.log("\nUC 11D - NonWorkingDayNums: " + nonWorkingDayNums);
